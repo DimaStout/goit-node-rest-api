@@ -50,3 +50,5 @@ module.exports = {
   createContact: ctrlWrapper(createContact),
   updateContact: ctrlWrapper(updateContact),
 };
+
+const apr = 0;
