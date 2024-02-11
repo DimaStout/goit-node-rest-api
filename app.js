@@ -2,14 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 require("dotenv").config();
+
+const contactsRouter = require("./routes/contactsRouter");
 
 const { DB_ADMIN_NAME, DB_ADMIN_PASSWORD, DB_CLUSTER_NAME, DB_COLLECTION } =
   process.env;
 
 const DB_HOST_NEW = `mongodb+srv://${DB_ADMIN_NAME}:${DB_ADMIN_PASSWORD}@${DB_CLUSTER_NAME}.mongodb.net/${DB_COLLECTION}`;
-
-const contactsRouter = require("./routes/contactsRouter");
 
 const app = express();
 
