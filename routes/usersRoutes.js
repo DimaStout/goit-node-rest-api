@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { tokenValidator } = require("../../middlewares");
+const { tokenValidator } = require("../middlewares");
 
 const {
   registerUser,
@@ -8,7 +8,7 @@ const {
   logoutUser,
   currentUser,
   updateSubscription,
-} = require("../../controllers/auth");
+} = require("../controllers/auth");
 
 const {
   registerUserSchema,
@@ -16,9 +16,9 @@ const {
   logoutUserSchema,
   currentUserSchema,
   subscribeUserSchema,
-} = require("../../schemas/usersSchemas");
+} = require("../schemas/usersSchemas");
 
-const { validateBody } = require("../../helpers");
+const { validateBody } = require("../helpers");
 
 const usersRouter = express.Router();
 

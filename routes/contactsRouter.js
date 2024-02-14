@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { isValidId, tokenValidator } = require("../../middlewares");
+const { isValidId, tokenValidator } = require("../middlewares");
 
 const {
   getAllContacts,
@@ -9,15 +9,15 @@ const {
   createContact,
   updateContactById,
   updateStatusContact,
-} = require("../../controllers/contacts");
+} = require("../controllers/contacts");
 
 const {
   createContactSchema,
   updateContactSchema,
   favoriteSchema,
-} = require("../../schemas/contactsSchemas");
+} = require("../schemas/contactsSchemas");
 
-const { validateBody } = require("../../helpers");
+const { validateBody } = require("../helpers");
 
 const contactsRouter = express.Router();
 

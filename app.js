@@ -14,8 +14,8 @@ const {
 
 const DB_HOST_NEW = `mongodb+srv://${DB_ADMIN_NAME}:${DB_ADMIN_PASSWORD}@${DB_CLUSTER_NAME}.mongodb.net/${DB_COLLECTION}`;
 
-const contactsRouter = require("./routes/api/contactsRouter");
-const usersRoutes = require("./routes/api/usersRoutes");
+const contactsRouter = require("./routes/contactsRouter");
+const usersRoutes = require("./routes/usersRoutes");
 
 const app = express();
 

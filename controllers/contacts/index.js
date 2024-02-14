@@ -1,4 +1,4 @@
-const { controllerWrapper } = require("../../helpers");
+const { ctrlWrapper } = require("../../helpers");
 
 const getAllContacts = require("./getAllContacts");
 const getContactById = require("./getContactById");
@@ -8,10 +8,10 @@ const updateContactById = require("./updateContactById");
 const updateStatusContact = require("./updateStatusContact");
 
 module.exports = {
-  getAllContacts: controllerWrapper(getAllContacts),
-  getContactById: controllerWrapper(getContactById),
-  deleteContactById: controllerWrapper(deleteContactById),
-  createContact: controllerWrapper(createContact),
-  updateContactById: controllerWrapper(updateContactById),
-  updateStatusContact: controllerWrapper(updateStatusContact),
+  getAllContacts: ctrlWrapper(getAllContacts),
+  getContactById: ctrlWrapper(getContactById),
+  deleteContactById: ctrlWrapper(deleteContactById),
+  createContact: ctrlWrapper(createContact),
+  updateContactById: ctrlWrapper(updateContactById),
+  updateStatusContact: ctrlWrapper(updateStatusContact),
 };

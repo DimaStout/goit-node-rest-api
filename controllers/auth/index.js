@@ -1,4 +1,4 @@
-const { controllerWrapper } = require("../../helpers");
+const { ctrlWrapper } = require("../../helpers");
 
 const registerUser = require("./registerUser");
 const loginUser = require("./loginUser");
@@ -9,9 +9,9 @@ const updateSubscription = require("./updateSubscription.js");
 updateSubscription;
 
 module.exports = {
-  registerUser: controllerWrapper(registerUser),
-  loginUser: controllerWrapper(loginUser),
-  logoutUser: controllerWrapper(logoutUser),
-  currentUser: controllerWrapper(currentUser),
-  updateSubscription: controllerWrapper(updateSubscription),
+  registerUser: ctrlWrapper(registerUser),
+  loginUser: ctrlWrapper(loginUser),
+  logoutUser: ctrlWrapper(logoutUser),
+  currentUser: ctrlWrapper(currentUser),
+  updateSubscription: ctrlWrapper(updateSubscription),
 };
