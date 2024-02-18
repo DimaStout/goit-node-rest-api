@@ -1,6 +1,13 @@
 const HttpError = require("./HttpError");
-const ctrlWrapper = require("./ctrlWrapper");
-const handleMongooseError = require("./handleMongooseError");
+const controllerWrapper = require("./controllerWraper");
 const validateBody = require("./validateBody");
+const handleMongooseError = require("./handleMongooseError");
+const changeImageSize = require("./changeImageSize");
 
-module.exports = { HttpError, ctrlWrapper, handleMongooseError, validateBody };
+module.exports = {
+  HttpError,
+  controllerWrapper,
+  validateBody,
+  handleMongooseError,
+  changeImageSize,
+};
