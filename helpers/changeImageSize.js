@@ -2,7 +2,7 @@ const Jimp = require("jimp");
 const HttpError = require("./HttpError");
 const path = require("path");
 
-const avatarsDir = path.join(__dirname, "../", "public");
+const avatarsDir = path.join(__dirname, "..", "public");
 
 const changeImageSize = (tempUpload) => {
   const route = avatarsDir + "/" + tempUpload;

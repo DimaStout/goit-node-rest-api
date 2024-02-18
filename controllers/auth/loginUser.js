@@ -1,39 +1,36 @@
-const { User } = require("../../models");
 const { HttpError } = require("../../helpers");
+const { User } = require("../../models");
 const bcrypt = require("bcrypt");
-
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const { JWT_SECRET } = process.env;
 
-const loginUser = async (req, res, next) => {
-  const { email, password } = req.body;
-
+const login = async (req, res) => {
+  const { email, password, subscription } = req.body;
   const user = await User.findOne({ email });
-
   if (!user) {
     throw HttpError(401, "Email or password is wrong");
   }
-
-  const isValidPassword = await bcrypt.compare(password, user.password);
-
-  if (!isValidPassword) {
+  const passwordCompare = await bcrypt.compare(password, user.password);
+  if (!passwordCompare) {
     throw HttpError(401, "Email or password is wrong");
   }
 
-  const token =
-    // await
-    jwt.sign({ id: user.id }, JWT_SECRET, {
-      expiresIn: "1d",
-    });
+  const payload = {
+    id: user._id,
+  };
 
-  await User.findByIdAndUpdate(user.id, { token }, { new: true });
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "20h" });
+  await User.findByIdAndUpdate(user._id, { token });
 
   res.status(200).json({
     token,
-    email,
-    subscription: user.subscription,
+    user: {
+      email: user.email,
+      subscription: user.subscription,
+    },
   });
 };
 
-module.exports = loginUser;
+module.exports = login;

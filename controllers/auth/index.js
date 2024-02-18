@@ -1,5 +1,4 @@
 const { controllerWrapper } = require("../../helpers");
-
 const registerUser = require("./registerUser");
 const loginUser = require("./loginUser");
 const logoutUser = require("./logoutUser");

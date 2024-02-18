@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { authenticate, upload } = require("../../middlewares");
+const { authenticate, upload } = require("../middlewares");
 
 const {
   registerUser,
@@ -9,17 +9,16 @@ const {
   currentUser,
   updateSubscription,
   updateAvatar,
-} = require("../../controllers/auth");
+} = require("../controllers/auth");
 
 const {
   registerUserSchema,
   loginUserSchema,
-  logoutUserSchema,
   currentUserSchema,
   subscribeUserSchema,
-} = require("../../schemas/usersSchemas");
+} = require("../schemas/usersSchemas");
 
-const { validateBody } = require("../../helpers");
+const { validateBody } = require("../helpers");
 
 const usersRouter = express.Router();
 

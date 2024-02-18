@@ -10,8 +10,6 @@ const loginUserSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-const logoutUserSchema = Joi.object({});
-
 const currentUserSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
@@ -24,7 +22,6 @@ const subscribeUserSchema = Joi.object({
 module.exports = {
   registerUserSchema,
   loginUserSchema,
-  logoutUserSchema,
   currentUserSchema,
   subscribeUserSchema,
 };

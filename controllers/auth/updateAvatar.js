@@ -1,29 +1,28 @@
-const { User } = require("../../models");
 const path = require("path");
 const fs = require("fs/promises");
-
 const Jimp = require("jimp");
-const { changeImageSize } = require("../../helpers");
+const { User } = require("../../models");
 
-const avatarsDir = path.join(__dirname, "../../", "public", "avatars");
+const avatarsDir = path.join(__dirname, "../..", "public", "avatars");
 
-const updateAvatar = async (req, res, next) => {
+const updateAvatar = async (req, res) => {
   const { _id } = req.user;
 
-  const { path: tempUpload, originalname } = req.file;
-
+  const { path: tmpUpload, originalname } = req.file;
   const filename = `${_id}_${originalname}`;
+  const img = await Jimp.read(tmpUpload);
+  await img.resize(250, 250).writeAsync(tmpUpload);
 
   const resultUpload = path.join(avatarsDir, filename);
 
-  await fs.rename(tempUpload, resultUpload);
-
+  await fs.rename(tmpUpload, resultUpload);
   const avatarURL = path.join("avatars", filename);
-  changeImageSize(avatarURL);
 
-  await User.findByIdAndUpdate(_id, { avatarURL }, { new: true });
+  await User.findByIdAndUpdate(_id, { avatarURL });
 
-  res.json({ avatarURL });
+  res.status(200).json({
+    avatarURL,
+  });
 };
 
 module.exports = updateAvatar;
