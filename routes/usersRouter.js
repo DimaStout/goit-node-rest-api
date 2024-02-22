@@ -9,6 +9,8 @@ const {
   currentUser,
   updateSubscription,
   updateAvatar,
+  verifyEmail,
+  reVerification,
 } = require("../controllers/auth");
 
 const {
@@ -16,6 +18,7 @@ const {
   loginUserSchema,
   currentUserSchema,
   subscribeUserSchema,
+  reVerificationSchema,
 } = require("../schemas/usersSchemas");
 
 const { validateBody } = require("../helpers");
@@ -23,6 +26,8 @@ const { validateBody } = require("../helpers");
 const usersRouter = express.Router();
 
 usersRouter.post("/register", validateBody(registerUserSchema), registerUser);
+usersRouter.get("/verify/:verificationToken", verifyEmail);
+usersRouter.post("/verify", validateBody(reVerificationSchema), reVerification);
 usersRouter.post("/login", validateBody(loginUserSchema), loginUser);
 usersRouter.post("/logout", authenticate, logoutUser);
 
