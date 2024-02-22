@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const { handleMongooseError } = require("../helpers");
 
 const userSchema = new Schema(
   {
@@ -26,13 +25,20 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
   {
     versionKey: false,
     timestamps: true,
   }
 );
-userSchema.post("save", handleMongooseError);
 
 const User = model("user", userSchema);
 

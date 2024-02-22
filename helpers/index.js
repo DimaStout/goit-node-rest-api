@@ -3,6 +3,8 @@ const controllerWrapper = require("./controllerWraper");
 const validateBody = require("./validateBody");
 const handleMongooseError = require("./handleMongooseError");
 const changeImageSize = require("./changeImageSize");
+const emailContentMaker = require("./emailContentMaker");
+const nodemailerFn = require("./nodemailerFn");
 
 module.exports = {
   HttpError,
@@ -10,4 +12,6 @@ module.exports = {
   validateBody,
   handleMongooseError,
   changeImageSize,
+  emailContentMaker,
+  nodemailerFn,
 };

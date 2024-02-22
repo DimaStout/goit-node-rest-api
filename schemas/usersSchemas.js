@@ -10,6 +10,10 @@ const loginUserSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+const reVerificationSchema = Joi.object({
+  email: Joi.string().email().required(),
+});
+
 const currentUserSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
@@ -24,4 +28,5 @@ module.exports = {
   loginUserSchema,
   currentUserSchema,
   subscribeUserSchema,
+  reVerificationSchema,
 };
